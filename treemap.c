@@ -120,7 +120,8 @@ Pair * nextTreeMap(TreeMap * tree)
 {
     if (tree->current->right != NULL)
     {
-        return getMinimunNode(tree->current->right); // Aquí, getMinimumNode es una función auxiliar que retorna el nodo con la clave mínima en un subárbol dado. Esta función es necesaria para encontrar el sucesor en el caso 1.
+        tree->current = getMinimunNode(tree->current->right);
+        return tree->current->pair;
     }
     else
     {
