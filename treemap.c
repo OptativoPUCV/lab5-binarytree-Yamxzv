@@ -120,24 +120,36 @@ TreeNode* getMinimunNode(TreeNode* node)
 
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    TreeNode* temp = tree->current;
+    if (tree == NULL || tree->root == NULL) return NULL;
 
-    if (temp == NULL) return NULL;
-    
+    TreeNode* temp = tree->current;
+    TreeNode* successor = NULL;
+
     if (temp->right != NULL)
     {
-        return getMinimunNode(temp->right)->pair;
+        successor = getMinimunNode(temp->right);
     }
     else
     {
-        while(temp->parent != NULL && temp->parent->right == temp)
+        TreeNode* current = tree->root;
+        while (current != NULL)
         {
-            temp = temp->parent;
+            if (tree->lower_than(temp->pair->key, current->pair->key))
+            {
+                successor = current;
+                current = current->left;
+            }
+            else if (tree->lower_than(current->pair->key, temp->pair->key))
+            {
+                current = current->right;
+            }
+            else
+            {
+               break; 
+            }
         }
-        
-        if (temp->parent == NULL) return NULL;
-        
-        return temp->parent->pair;
     }
-    
+    tree->current = successor;
+
+    return successor->pair;
 }
