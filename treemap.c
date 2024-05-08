@@ -108,6 +108,8 @@ Pair * firstTreeMap(TreeMap * tree) {
 
 TreeNode* getMinimunNode(TreeNode* node)
 {
+    if (node == NULL) return NULL;
+    
     TreeNode* temp = node;
     while(temp->left != NULL)
     {
