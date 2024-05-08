@@ -110,3 +110,9 @@ treemap.c:154:9: error: ‘succesor’ undeclared (first use in this function); 
 treemap.c:154:9: note: each undeclared identifier is reported only once for each function it appears in
 Compilation failed
 1adbe3d
+Wed 08 May 2024 07:46:47 PM UTC: 
+ treemap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests:  16|5
+total_score: 30/70
+b1ff76b
