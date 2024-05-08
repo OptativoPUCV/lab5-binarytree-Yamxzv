@@ -151,5 +151,8 @@ Pair * nextTreeMap(TreeMap * tree)
     }
     tree->current = successor;
 
-    return successor->pair;
+    if (succesor != NULL){
+        return successor->pair;
+    }
+    return NULL;
 }
