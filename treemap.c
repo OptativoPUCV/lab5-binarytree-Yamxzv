@@ -94,8 +94,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
     return NULL; // Si no se encuentra la clave, retorna NULL.
 }
 
-
-Pair * upperBound(TreeMap * tree, void* key) {
+Pair * upperBound(TreeMap * tree, void* key) 
+{
     return NULL;
 }
 
