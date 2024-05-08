@@ -44,3 +44,17 @@ Wed 08 May 2024 07:06:28 PM UTC:
  tests:  11|6
 total_score: 15/70
 3b9ee03
+Wed 08 May 2024 07:12:19 PM UTC: 
+ treemap.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘nextTreeMap’:
+treemap.c:113:16: error: implicit declaration of function ‘getMinimunNode’ [-Werror=implicit-function-declaration]
+  113 |         return getMinimunNode(tree->current->right);
+      |                ^~~~~~~~~~~~~~
+treemap.c:113:16: error: returning ‘int’ from a function with return type ‘Pair *’ makes pointer from integer without a cast [-Werror=int-conversion]
+  113 |         return getMinimunNode(tree->current->right);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+1bb3cc3
