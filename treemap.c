@@ -50,6 +50,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 {
     TreeNode* newNode = createTreeNode(key, value);
     
+    // Si el arbol esta vacío.
     if (tree->root == NULL)
     {
         tree->root = newNode;
@@ -57,6 +58,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
         return;
     }
 
+    // Recorremos para encontrar la posición de inserción.
     TreeNode* temp = tree->root;
     TreeNode* parent = NULL;
     while (temp != NULL)
@@ -72,13 +74,14 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
         }
         else
         {
+            // Silas claves son iguales, actualizamos el valor.
             temp->pair->value = value;
-            free(newNode->pair);
-            free(newNode);
+            free(newNode->pair); // Liberamos la memoria del par del nuevo nodo.
+            free(newNode); // Liberamos la memoria del nuevo nodo.
             return;
         }
     }
-
+    // Insertamos el nuevo nodo en la posición.
     newNode->parent = parent;
     if (tree->lower_than(key, parent->pair->key))
     {
