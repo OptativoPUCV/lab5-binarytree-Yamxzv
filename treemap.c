@@ -120,19 +120,18 @@ TreeNode* getMinimunNode(TreeNode* node)
 
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    if (tree->current->right != NULL)
+    TreeNode* temp = tree->current;
+    
+    if (temp->right != NULL)
     {
-        tree->current = getMinimunNode(tree->current->right);
-        return tree->current->pair;
+        return getMinimunNode(temp->right)->pair;
     }
     else
     {
-        TreeNode* temp = tree->current;
         while(temp->parent != NULL && temp->parent->right == temp)
         {
             temp = temp->parent;
         }
-
         return temp->parent->pair;
     }
     
