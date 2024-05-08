@@ -164,8 +164,6 @@ TreeNode* getMinimunNode(TreeNode* node)
 
 Pair * nextTreeMap(TreeMap * tree) 
 {
-    if (tree == NULL || tree->root == NULL) return NULL;
-
     TreeNode* temp = tree->current;
     TreeNode* successor = NULL;
 
