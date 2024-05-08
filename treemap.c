@@ -106,11 +106,21 @@ Pair * firstTreeMap(TreeMap * tree) {
     return NULL;
 }
 
+TreeNode* getMinimunNode(TreeNode* node)
+{
+    TreeNode* temp = node;
+    while(temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+    return temp;
+}
+
 Pair * nextTreeMap(TreeMap * tree) 
 {
     if (tree->current->right != NULL)
     {
-        return getMinimunNode(tree->current->right);
+        return getMinimunNode(tree->current->right); // Aquí, getMinimumNode es una función auxiliar que retorna el nodo con la clave mínima en un subárbol dado. Esta función es necesaria para encontrar el sucesor en el caso 1.
     }
     else
     {
