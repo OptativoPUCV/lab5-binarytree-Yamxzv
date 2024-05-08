@@ -121,6 +121,8 @@ TreeNode* getMinimunNode(TreeNode* node)
 Pair * nextTreeMap(TreeMap * tree) 
 {
     TreeNode* temp = tree->current;
+
+    if (temp == NULL) return NULL;
     
     if (temp->right != NULL)
     {
@@ -132,6 +134,9 @@ Pair * nextTreeMap(TreeMap * tree)
         {
             temp = temp->parent;
         }
+        
+        if (temp->parent == NULL) return NULL;
+        
         return temp->parent->pair;
     }
     
