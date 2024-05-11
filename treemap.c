@@ -210,16 +210,18 @@ Pair * upperBound(TreeMap * tree, void* key)
 
 Pair * firstTreeMap(TreeMap * tree) 
 {
-    if (tree == NULL) return NULL;
+    if (tree == NULL) return NULL; // Si el arbol es esta vacío, returna NULL. 
     
-    TreeNode* temp = tree->root;
+    TreeNode* temp = tree->root; 
     if (temp == NULL) return NULL;
     
+    // Mientras haya un nodo izquierdo, avanza hacia la izquierda
     while(temp->left != NULL)
     {
         temp = temp->left;
     }
-    tree->current = temp;
+    
+    tree->current = temp; // Actualiza el temp (nodo actual) del arbol al nodo mas a la izquierda.
     return temp->pair;
 }
 
