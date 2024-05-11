@@ -210,7 +210,7 @@ Pair * upperBound(TreeMap * tree, void* key)
 
     while (temp != NULL)
     {
-        if (is_equal(key, tree, temp->pair->key))
+        if (is_equal(tree, temp->pair->key, key))
         {
             tree->current = temp;
             return temp->pair;
