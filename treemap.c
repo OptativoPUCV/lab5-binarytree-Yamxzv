@@ -208,8 +208,19 @@ Pair * upperBound(TreeMap * tree, void* key)
     return NULL;
 }
 
-Pair * firstTreeMap(TreeMap * tree) {
-    return NULL;
+Pair * firstTreeMap(TreeMap * tree) 
+{
+    if (tree == NULL) return NULL;
+    
+    TreeNode* temp = tree->root;
+    if (temp == NULL) return NULL;
+    
+    while(temp->left != NULL)
+    {
+        temp = temp->left;
+    }
+    tree->current = temp;
+    return temp->pair;
 }
 
 TreeNode* getMinimunNode(TreeNode* node)
