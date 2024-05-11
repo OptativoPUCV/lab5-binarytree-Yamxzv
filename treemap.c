@@ -181,6 +181,7 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
     TreeNode* temp = tree->root;
     while(temp != NULL)
     {
+        // Si las claves son iguales, hemos encontrado el nodo.
         if(is_equal(tree,temp->pair->key,key))
         {
             tree->current = temp;
@@ -188,10 +189,12 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
         }
         else
         {
+            // Si la clave en menor, se mueve a la izquierda.
             if(tree->lower_than(key,temp->pair->key) == 1)
             {
                 temp = temp->left;
             }
+            // Si la clave es mayor, se mueve a la derecha.
             else
             {
                 temp = temp->right;
@@ -210,7 +213,7 @@ Pair * upperBound(TreeMap * tree, void* key)
 
     while (temp != NULL) 
     {
-        // Si encontramos una clave igual a la clave buscada, retornamos el nodo actual.
+        // Si encontramos una clave igual a la clave buscada.
         if (is_equal(tree, temp->pair->key, key))
         {
             tree->current = temp;
@@ -224,7 +227,7 @@ Pair * upperBound(TreeMap * tree, void* key)
         // Si la clave del nodo actual es mayor que la clave buscada.
         else
         {
-            upbd_node = temp; // Actualizamos el nodo superior.
+            upbd_node = temp;
             temp = temp->left; // Buscamos en el subárbol izquierdo.
         }
     }
@@ -237,17 +240,17 @@ Pair * upperBound(TreeMap * tree, void* key)
     }
     else
     {
-        return NULL; // Si no se encontró un nodo superior, retorna NULL.
+        return NULL;
     }
 }
 
 Pair * firstTreeMap(TreeMap * tree) 
 {
-    if (tree == NULL || tree->root == NULL) return NULL; // Si el árbol está vacío, retorna NULL.
+    if (tree == NULL || tree->root == NULL) return NULL;
     
     TreeNode* temp = tree->root;
     
-    // Mientras haya un nodo izquierdo, avanza hacia la izquierda
+    // Mientras haya un nodo izquierdo, avanza hacia la izquierda.
     while(temp->left != NULL)
     {
         temp = temp->left;
@@ -274,7 +277,7 @@ Pair * nextTreeMap(TreeMap * tree)
     TreeNode* temp = tree->current;
     TreeNode* successor = NULL;
 
-    // Si el nodo actual tiene un hijo derecho, el sucesor será el menor de su subárbol derecho.
+    // Si el nodo actual tiene un hijo derecho.
     if (temp->right != NULL)
     {
         successor = getMinimunNode(temp->right);
