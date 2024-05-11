@@ -206,10 +206,11 @@ Pair * upperBound(TreeMap * tree, void* key)
     if (tree == NULL || tree->root == NULL) return NULL; // Si el árbol está vacío, retorna NULL.
     
     TreeNode* temp = tree->root;
-    TreeNode* upbd = NULL;
+    TreeNode* upbd_node = NULL;
 
-    while (temp != NULL)
+    while (temp != NULL) 
     {
+        // 
         if (is_equal(tree, temp->pair->key, key))
         {
             tree->current = temp;
@@ -221,15 +222,15 @@ Pair * upperBound(TreeMap * tree, void* key)
         }
         else
         {
-            upbd = temp;
+            upbd_node = temp;
             temp = temp->left;
         }
     }
 
-    if (upbd != NULL)
+    if (upbd_node != NULL)
     {
-        tree->current = upbd;
-        return upbd->pair;
+        tree->current = upbd_node;
+        return upbd_node->pair;
     }
     else
     {
