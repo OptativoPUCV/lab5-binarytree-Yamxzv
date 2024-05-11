@@ -96,29 +96,33 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
 
 TreeNode * minimum(TreeNode * x)
 {
+    // Mientras haya un nodo izquierdo, continua moviendose a la izquierda.
     while(x->left != NULL)
     {
         x = x->left;
     }
     
-    return x;
+    return x; // Devuelve el nodo más a la izquierda (mínimo).
 }
 
 
 void removeNode(TreeMap * tree, TreeNode* node) 
 {
+    // Si el nodo no tiene hijos.
     if (node->left == NULL && node->right == NULL)
     {
+        // Si el nodo es el hijo izquierdo del padre, elimina la referencia del padre al nodo
         if (node->parent->left == node)
         {
             node->parent->left = NULL;
         }
-
+        // Si el nodo es hijo derecho del padre, elimina la referencia del padre al nodo
         if (node->parent->right == node)
         {
             node->parent->right = NULL;
         }
     }
+    // Si el nodo tiene solo un hijo.
     else if (node->left == NULL || node->right == NULL)
     {
         if (node->left != NULL)
@@ -150,13 +154,16 @@ void removeNode(TreeMap * tree, TreeNode* node)
             }
         }
     }
+    // Si el nodo tiene dos hijos.
     else if (node->left != NULL && node->right != NULL)
     {
+        // Encuentra el nodo mínimo en el subárbol derecho.
         TreeNode* min = minimum(node->right);
 
+        // Copia el valor del nodo mínimo al nodo actual.
         node->pair->key = min->pair->key;
         node->pair->value = min->pair->value;
-        removeNode(tree, min);
+        removeNode(tree, min); // Elimina el nodo mínimo (que esta duplicado) del subárbol derecho.
     }
 }
 
@@ -168,9 +175,6 @@ void eraseTreeMap(TreeMap * tree, void* key){
     removeNode(tree, node);
 
 }
-
-
-
 
 Pair * searchTreeMap(TreeMap * tree, void* key) 
 {
@@ -199,6 +203,8 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 Pair * upperBound(TreeMap * tree, void* key) 
 {
+
+    
     return NULL;
 }
 
