@@ -210,23 +210,26 @@ Pair * upperBound(TreeMap * tree, void* key)
 
     while (temp != NULL) 
     {
-        // 
+        // Si encontramos una clave igual a la clave buscada, retornamos el nodo actual.
         if (is_equal(tree, temp->pair->key, key))
         {
             tree->current = temp;
             return temp->pair;
         }
+        // Si la clave del nodo actual es menor que la clave buscada.
         else if (tree->lower_than(temp->pair->key, key))
         {
-            temp = temp->right;
+            temp = temp->right; // Buscamos en el subárbol derecho.
         }
+        // Si la clave del nodo actual es mayor que la clave buscada.
         else
         {
-            upbd_node = temp;
-            temp = temp->left;
+            upbd_node = temp; // Actualizamos el nodo superior.
+            temp = temp->left; // Buscamos en el subárbol izquierdo.
         }
     }
 
+    // Si se encontró un nodo superior
     if (upbd_node != NULL)
     {
         tree->current = upbd_node;
@@ -234,7 +237,7 @@ Pair * upperBound(TreeMap * tree, void* key)
     }
     else
     {
-        return NULL;
+        return NULL; // Si no se encontró un nodo superior, retorna NULL.
     }
 }
 
