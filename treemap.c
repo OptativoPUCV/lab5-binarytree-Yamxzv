@@ -203,17 +203,45 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 Pair * upperBound(TreeMap * tree, void* key) 
 {
-
+    if (tree == NULL || tree->root == NULL) return NULL; // Si el árbol está vacío, retorna NULL.
     
-    return NULL;
+    TreeNode* temp = tree->root;
+    TreeNode* upbd = NULL;
+
+    while (temp != NULL)
+    {
+        if (is_equal(tree, temp->pair->key, key))
+        {
+            tree->current = temp;
+            return temp->pair;
+        }
+        else if (tree->lower_than(key, temp->pair->key))
+        {
+            temp = temp->right;
+        }
+        else
+        {
+            upbd = temp;
+            temp = temp->left;
+        }
+    }
+
+    if (upbd != NULL)
+    {
+        tree->current = upbd;
+        return upbd->pair;
+    }
+    else
+    {
+        return NULL;
+    }
 }
 
 Pair * firstTreeMap(TreeMap * tree) 
 {
-    if (tree == NULL) return NULL; // Si el arbol es esta vacío, returna NULL. 
+    if (tree == NULL || tree->root == NULL) return NULL; // Si el árbol está vacío, retorna NULL.
     
-    TreeNode* temp = tree->root; 
-    if (temp == NULL) return NULL;
+    TreeNode* temp = tree->root;
     
     // Mientras haya un nodo izquierdo, avanza hacia la izquierda
     while(temp->left != NULL)
@@ -221,7 +249,7 @@ Pair * firstTreeMap(TreeMap * tree)
         temp = temp->left;
     }
     
-    tree->current = temp; // Actualiza el temp (nodo actual) del arbol al nodo mas a la izquierda.
+    tree->current = temp; // Actualiza el nodo actual del arbol al nodo mas a la izquierda.
     return temp->pair;
 }
 
